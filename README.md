@@ -17,5 +17,5 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 8. Congrats, you should be hosting your website.
 
-9. When pushing new code through your pipeline you might not see the most up-to-date code on your web page. In order to fix this you must, after pipeline is finished deploying, go to cloudfront. Click on your distrubution and navigate to "Invalidations". Create a "New Validation", under object path type in "*/", and click "Create Validation". This will insure that cloudfront is using the most up-to-date files in your S3 bucket.
+9. When pushing new code through your pipeline you might not see the most up-to-date code on your web page. In order to fix this you must, after pipeline is finished deploying, go to cloudfront. Click on your distrubution and navigate to "Invalidations". Create a "New Validation", under object path type in "/*", and click "Create Validation". This will insure that cloudfront is using the most up-to-date files in your S3 bucket.
 
