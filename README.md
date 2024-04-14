@@ -83,15 +83,15 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 ![7-1 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/676caaf2-5d3b-455a-a1f7-8b9a25722e53)
 
- 17. A bucket policy giving cloudfront access to your s3 bucket will be created when finished.
-
 ![7-2 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/dd9b934d-ca01-4b3e-9747-184fd3ce524c)
 
-18. Under viewer protocol policy select the "Redirect http to https" radio button.
+17. A bucket policy giving cloudfront access to your s3 bucket will be created when finished.
 
 ![7-3 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/7d5a5414-7b71-45bd-9fb0-f19492e1b95f)
 
 ![7-4 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/1eec95b8-ce9b-44c9-98d7-991d89d47289)
+
+18. Under viewer protocol policy select the "Redirect http to https" radio button.
 
 ![7-5 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b50c0913-cf60-4e7a-bf5f-67185bbb6cb0)
 
