@@ -77,7 +77,7 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 ![6-11 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/62cea6b6-4266-4a15-9d52-14127c281a74)
 
-16. In Cloudfront, create a new distribution. In Origin domain choose your amazon s3 bucket. Under Origin access make sure to select "Origin access control settings". This will only allow your S3 bucket to restrict access to only cloudfront. In origin access control select your S3 bucket where your are hosting your website documents.  Under Alternate domain name be sure to add "johndoe.com" and "www.johndoe.com". Custom SSL certificate is where you will select the certifacte you created in step 5.  Be sure to list the "Default root object" to index.html. Hit "Create distribution" at the bottom of the screen.
+16. In Cloudfront, create a new distribution. In Origin domain choose your amazon s3 bucket. Under Origin access make sure to select "Origin access control settings". This will only allow your S3 bucket to restrict access to only cloudfront. In origin access control select your S3 bucket where your are hosting your website documents.
 
 ![7 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/149f9929-290f-4d29-baf8-63dd0fc6d599)
 
@@ -95,9 +95,11 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 ![7-5 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b50c0913-cf60-4e7a-bf5f-67185bbb6cb0)
 
-8. In the Web Application Firewall (WAF), you can go ahead and check off the "Do not enable secuirty protections" radio button.  If this is something more than a hobby project then go ahead and enable the WAF. If you choose to enble this it will accumulate charges.
+19. In the Web Application Firewall (WAF), you can go ahead and check off the "Do not enable secuirty protections" radio button.  If this is something more than a hobby project then go ahead and enable the WAF. If you choose to enble this it will accumulate charges.
 
 ![7-6 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/aba528bb-20f8-4a30-baa3-a515fd52b7e6)
+
+20. Under Alternate domain name be sure to add "johndoe.com" and "www.johndoe.com". Custom SSL certificate is where you will select the certifacte you created in step 5.  Be sure to list the "Default root object" to index.html. Hit "Create distribution" at the bottom of the screen.
 
 ![7-7 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/f4a97da5-855e-4086-b859-0ae9314aeb32)
 
