@@ -69,7 +69,7 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 ![6-9 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/71731c2d-049e-4005-9864-f2fc9f318b4e)
 
-14. Navigate over to your S3 bucket and you will see a codepipline bucket created. Take a peak!
+14. Navigate over to your S3 bucket and you will see a codepipline bucket created. Do not alter, or remove this bucket.  Click on the bucket you choose to deploy your Github code to in step 12.
 
 ![6-10 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/752075da-f4cd-4dee-a079-f553d2663a22)
 
@@ -102,6 +102,8 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 20. Under Alternate domain name be sure to add "johndoe.com" and "www.johndoe.com". Custom SSL certificate is where you will select the certifacte you created in step 5.  Be sure to list the "Default root object" to index.html. Hit "Create distribution" at the bottom of the screen.
 
 ![7-7 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/f4a97da5-855e-4086-b859-0ae9314aeb32)
+
+21. Once you have created your CloudFront Distribution a banner at the top of the screen should appear giving you the ability to "Copy Policy". Click the "Copy Policy" button, navigate back to your Amazon S3 bucket where you are keeping your files. Navigate to "Bucket Policy" under "Permissions" and place the policy here
 
 ![7-8 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/2156c4b0-7122-4bf3-a07c-18af7cfed914)
 
