@@ -1,5 +1,5 @@
-# Deploy a Web App using S3, Route 53, CloudFront, ACM and pipelines.
-Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manager and pipelines w/ github.
+# Deploy a Static Web App using S3, Route 53, CloudFront, ACM and pipelines.
+In this project you are going to learn how to deploy a static website in AWS using S3, Route 53, CloudFront, certificate manager and pipelines w/ Github.
 
 1. In your AWS console go to S3 bucket.
 
