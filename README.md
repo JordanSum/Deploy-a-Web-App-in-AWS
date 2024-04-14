@@ -17,13 +17,15 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 ![4 create a domain](https://github.com/JordanSum/S3-Static-Website/assets/144553157/35985780-850b-477c-8dbf-ee4d76c81d3f)
 
 
-5. In certificate manager, request a SSL certificate for your recently purchased domain name. (make sure the region location for ACM (AWS Certificate Manager) is going to be the same as cloudfront. ex Oregon west 2). Be sure when setting up the the certifacte to include *.johndoe.com. This will allow whatever subdomain you might choose to use to be secure as well. Once created, add the certificate to your domain in route 53. At this point go back to Route 53, create a new CNAME record with www.johndoe.com pointing to johndoe.com
+5. In certificate manager, request a SSL certificate for your recently purchased domain name. (make sure the region location for ACM (AWS Certificate Manager) is going to be the same as cloudfront. ex Oregon west 2). Be sure when setting up the the certifacte to include *.johndoe.com. This will allow whatever subdomain you might choose to use to be secure as well.
 
 ![5-1 create ACM](https://github.com/JordanSum/S3-Static-Website/assets/144553157/0543c69e-3c60-46da-afcf-6ce351519eec)
 
 ![5-2 create ACM](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b5bac44d-79ed-4aa4-b7df-f49f6da626f2)
 
 ![5-3 create ACM](https://github.com/JordanSum/S3-Static-Website/assets/144553157/381c77ac-5c32-4bcf-8117-35e91d7f9c56)
+
+6. Once created, add the certificate to your domain in route 53. At this point go back to Route 53, create a new CNAME record with www.johndoe.com pointing to johndoe.com
 
 ![5-4 create ACM](https://github.com/JordanSum/S3-Static-Website/assets/144553157/0602da51-28bb-40e5-a32c-fa5e377c1a71)
 
@@ -33,11 +35,15 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 
 
-6. In pipelines, create a new pipeline that links your github account to your amazon S3 bucket.  This will allow for a CI/CD code to be updated automaticly when pushed to github from your local machine.
+7. In pipelines, create a new pipeline that links your github account to your amazon S3 bucket.  This will allow for a CI/CD code to be updated automaticly when pushed to github from your local machine.
 
 ![6 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/1bef2b67-36c2-46e1-94f4-a84a15a12340)
 
+8.  Go ahead and git your Pipeline a name and select V2 for the Pipepline type.  Select "Queued" radio button for the execution mode, this will allow your executions to be processed one by one in the order that they were recieved.  Go ahead and select a new service roll to allow you to work with Pipelines with sufficent permissions.
+
 ![6-1 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/79ccb17a-2b00-442a-87f4-d67ea6502661)
+
+9. Connect Pipelines to your Github repository.
 
 ![6-2 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/24c01aad-76ef-4f99-8b1f-ff50405e18a6)
 
@@ -47,15 +53,27 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 ![6-5 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b5fbd365-b724-46c0-86ef-cc229be011c9)
 
+10. After you have configured the source from which you are recieving your code from, go to the "Trigger" subsection and select "No filter" radio button.  Everytime updated code is pushed to your selected repository in Github, Pipelines is triggered to pull the updated code and store it into S3.
+
 ![6-6 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b7059f46-0163-41db-827d-ef4b31dc8f4f)
+
+11. Skip Build stage.
 
 ![6-7 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/02f3fdac-be0a-493f-b6bd-61e695e83c2a)
 
+12.  Select where you want to deploy your code too. In this case we are selecting our Amazon S3 bucket.
+
 ![6-8 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/0d7e6f53-b1c1-4d83-a4be-c04744ed4722)
+
+13. The Pipeline will then begin operations.
 
 ![6-9 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/71731c2d-049e-4005-9864-f2fc9f318b4e)
 
+14. Navigate over to your S3 bucket and you will see a codepipline bucket created. Take a peak!
+
 ![6-10 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/752075da-f4cd-4dee-a079-f553d2663a22)
+
+15. You should find all your files from your Github Repo copied over to your S3 bucket.
 
 ![6-11 create pipeline](https://github.com/JordanSum/S3-Static-Website/assets/144553157/62cea6b6-4266-4a15-9d52-14127c281a74)
 
@@ -64,7 +82,7 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 
 
-7. In Cloudfront, create a new distribution. In Origin domain choose your amazon s3 bucket. Under Origin access make sure to select "Origin access control settings". This will only allow your S3 bucket to restrict access to only cloudfront. In origin access control select your S3 bucket where your are hosting your website documents. Also, a bucket policy giving cloudfront access to your s3 bucket will be created when finished. Under viewer protocol policy select the "Redirect http to https" radio button. Web Application Firewall (WAF) select "Do not enable security protection".  Under Alternate domain name be sure to add "johndoe.com" and "www.johndoe.com". Custom SSL certificate is where you will select the certifacte you created in step 5.  Be sure to list the "Default root object" to index.html. Hit "Create distribution" at the bottom of the screen.
+8. In Cloudfront, create a new distribution. In Origin domain choose your amazon s3 bucket. Under Origin access make sure to select "Origin access control settings". This will only allow your S3 bucket to restrict access to only cloudfront. In origin access control select your S3 bucket where your are hosting your website documents. Also, a bucket policy giving cloudfront access to your s3 bucket will be created when finished. Under viewer protocol policy select the "Redirect http to https" radio button. Web Application Firewall (WAF) select "Do not enable security protection".  Under Alternate domain name be sure to add "johndoe.com" and "www.johndoe.com". Custom SSL certificate is where you will select the certifacte you created in step 5.  Be sure to list the "Default root object" to index.html. Hit "Create distribution" at the bottom of the screen.
 
 ![7-1 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/676caaf2-5d3b-455a-a1f7-8b9a25722e53)
 
