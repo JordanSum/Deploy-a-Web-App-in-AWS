@@ -8,18 +8,16 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 ![1 create bucket splash screen](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b119ae0a-9353-44e3-a9b7-3b9e46ba49d2)
 
 
-![2 create bucket](https://github.com/JordanSum/S3-Static-Website/assets/144553157/8d936b0e-a240-4ee9-9f00-9c0d82cff681)
-
-
-
 3. Configure the S3 bucket appropriatly. Ensure that public access to the bucket is set to no access. Lots of other users will suggest that under properties, bottom of the page, section called "Static Website Hosting" should be enabled... dont enable this, leave it disabled (This will cause confusion between S3 and cloudfront w/ a certificate when enabling https). Also, leaving this disabled will prevent any data leaks from occuring from your S3 Bucket.
+
+![2 create bucket](https://github.com/JordanSum/S3-Static-Website/assets/144553157/8d936b0e-a240-4ee9-9f00-9c0d82cff681)
 
 4. Route 53 gives you the ability to purchase and manage your domain names.  Ensure that you have purchased a valid domain name in Route 53, we will come back to this.
 
 ![4 create a domain](https://github.com/JordanSum/S3-Static-Website/assets/144553157/35985780-850b-477c-8dbf-ee4d76c81d3f)
 
 
-5. In certificate manager, request a SSL certificate for your recently purchased domain name. (make sure the region location for ACM (AWS Certificate Manager) is going to be the same as cloudfront. ex Oregon west 2). Be sure when setting up the the certifacte to include *.johndoe.com. This will allow whatever subdomain you might choose to use to be secure as well. Once created, add the certificate to your domain in route 53. At this go back to Route 53, create a new CNAME record with www.johndoe.com pointing at johndoe.com
+5. In certificate manager, request a SSL certificate for your recently purchased domain name. (make sure the region location for ACM (AWS Certificate Manager) is going to be the same as cloudfront. ex Oregon west 2). Be sure when setting up the the certifacte to include *.johndoe.com. This will allow whatever subdomain you might choose to use to be secure as well. Once created, add the certificate to your domain in route 53. At this point go back to Route 53, create a new CNAME record with www.johndoe.com pointing to johndoe.com
 
 ![5-1 create ACM](https://github.com/JordanSum/S3-Static-Website/assets/144553157/0543c69e-3c60-46da-afcf-6ce351519eec)
 
@@ -77,6 +75,8 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 ![7-4 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/1eec95b8-ce9b-44c9-98d7-991d89d47289)
 
 ![7-5 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/b50c0913-cf60-4e7a-bf5f-67185bbb6cb0)
+
+8. In the Web Application Firewall (WAF), you can go ahead and check off the "Do not enable secuirty protections" radio button.  If this is something more than a hobby project then go ahead and enable the WAF. If you choose to enble this it will accumulate charges.
 
 ![7-6 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/aba528bb-20f8-4a30-baa3-a515fd52b7e6)
 
