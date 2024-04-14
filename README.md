@@ -111,18 +111,21 @@ Deploy a static website in AWS using S3, Route 53, CloudFront, certificate manag
 
 ![7-10 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/ae3db529-92e3-48cb-91ac-fe5d04df89d7)
 
+22. You can choose to navigate back to CloudFront and look at your distributions.  Once the Status is "Enabled" and the Last modified has changed to a date and time you are good to move on to the next step.
+
 ![7-11 create cloudfront](https://github.com/JordanSum/S3-Static-Website/assets/144553157/dce802d1-2154-4946-a2fa-991c50ffd3d8)
 
+23. You are going to navigate back over to Route 53 and go to the custom domain name that you have created. Once there you are going to create a new "A" record. When creating your new record your are going to toggle the "Alias" swith and select CloudFront distribution, and the actual distro you created.  Click on Create records.
 
 ![4-2 create domain](https://github.com/JordanSum/S3-Static-Website/assets/144553157/fb8315c2-d011-4f42-83df-abfe5df38f1e)
 
 
-8. Congrats, you should be hosting your website.
+24. Congrats, you should be hosting your website.
 
 ![8 website](https://github.com/JordanSum/S3-Static-Website/assets/144553157/3283dec6-e281-420a-8578-f77fdae18015)
 
 
-9. When pushing new code through your pipeline you might not see the most up-to-date code on your web page. In order to fix this you must, after pipeline is finished deploying, go to cloudfront. Click on your distrubution and navigate to "Invalidations". Create a "New Validation", under object path type in "/*", and click "Create Validation". This will insure that cloudfront is using the most up-to-date files in your S3 bucket.
+25. When pushing new code through your pipeline you might not see the most up-to-date code on your web page. In order to fix this you must, after pipeline is finished deploying, go to cloudfront. Click on your distrubution and navigate to "Invalidations". Create a "New Validation", under object path type in "/*", and click "Create Validation". This will insure that cloudfront is using the most up-to-date files in your S3 bucket.
 
 ![9 post care](https://github.com/JordanSum/S3-Static-Website/assets/144553157/7897f088-7164-42b8-9b5f-06a12ee26cda)
 
